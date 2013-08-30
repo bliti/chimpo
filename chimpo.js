@@ -4,6 +4,13 @@
 
 //Warning: HTML below is a temporary hack to test the Javascript. (:
 
+
+
+//note: this values are not secret. You find them on every mailchimp form. 
+var u = 'fab15eaf19084212d78240d70';
+var id = '6b08a63dfd';
+
+
 var chimpoBar = '<div style="' +
 
 				'position: absolute;' + 
@@ -18,8 +25,8 @@ var chimpoBar = '<div style="' +
 				'padding-top: 10px;" id="chimpoBar" ">' + 
 			
 				'<form class="chimpoForm" id="chimpoForm" action="http://github.us7.list-manage1.com/subscribe/post" method="POST">' +
-				 ' <input type="hidden" name="u" value="fab15eaf19084212d78240d70">' +
-				 ' <input type="hidden" name="id" value="6b08a63dfd">' +
+				 ' <input type="hidden" name="u" value="' + u + '">' +
+				 ' <input type="hidden" name="id" value="' + id + '">' +
 				 ' <input class="input" type="email" value="" name="MERGE0" placeholder="Your Email Address" required>' +
 				 ' <input type="submit" value="Send" name="submit" id="mc-embedded-subscribe">' +
 				 '</form>' +
