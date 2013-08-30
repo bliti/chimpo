@@ -1,8 +1,10 @@
+//Prototype version. Currently works all right. Going to prettify now. ^_^
+
 //requires Jquery 2.0
 
 //Warning: HTML below is a temporary hack to test the Javascript. (:
 
-var chimpoBar = '\<div style="' +
+var chimpoBar = '<div style="' +
 
 				'position: absolute;' + 
 				'height: 40px;' +
@@ -13,7 +15,7 @@ var chimpoBar = '\<div style="' +
 				'display: inline;' +
 				'background: red;' +
 				'padding-left: 100px;' +
-				'padding-top: 10px;">' + 
+				'padding-top: 10px;" id="chimpoBar" ">' + 
 			
 				'<form class="chimpoForm" id="chimpoForm" action="http://github.us7.list-manage1.com/subscribe/post" method="POST">' +
 				 ' <input type="hidden" name="u" value="fab15eaf19084212d78240d70">' +
@@ -22,8 +24,14 @@ var chimpoBar = '\<div style="' +
 				 ' <input type="submit" value="Send" name="submit" id="mc-embedded-subscribe">' +
 				 '</form>' +
 
-				'\</div>';
+				'</div>';
 
+
+var chimpoError = '<div id="chimpoError" style="width:100%;height:50px;background:yellow;position:absolute;top:0;left:0;display:inline;">'+
+                  'There was an error processing your newsletter signup. Please reload and try again.' +
+                  '</div>';
+
+var chimpoSuccess = '<div id="chimpoSuccess" style="width:100%;height:50px;background:blue;position:absolute;top:0;left:0;display:inline;">Thankyou</div>';
 
 
 $(document).ready(function() {
@@ -37,12 +45,15 @@ $(document).ready(function() {
 	      data: $this.serialize(),
 	      dataType    : 'json',
 	      contentType: "application/json; charset=utf-8",
-	      error       : function(err) { alert("Could not connect to the registration server."); },
+	      error       : function(err) { alert("There was an error processing your newsletter signup. Please reload and try again."); },
 	      success     : function(data) {
 	          if (data.result != "success") {
-				  alert('Shit broken');
-	          } else {
-				  alert('Worked');
+				  $('#chimpoBar').slideUp('slow');
+				  $('body').append(chimpoError).show();
+			  
+			  } else {
+				  $('#chimpoBar').slideUp('slow');
+				  $('body').append(chimpoSuccess).show();
 	          }
 	      }
 	  });
@@ -52,7 +63,7 @@ $(document).ready(function() {
 	
 	
 	//TODO:
-	// fix html
-	// add validation * IN PROGRESS
+	// fix html and css. Make it POP!
+	// add validation * Basics done. Need to improve.
 	// add ajax POST call * DONE
 	// mailchimp specific data * DONE
