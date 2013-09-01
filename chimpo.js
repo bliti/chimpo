@@ -1,3 +1,6 @@
+//This script works in conjuction with an app that is yet to be written. It is currently functional, but not
+//finalised
+
 //Prototype version. Currently works all right. Going to prettify now. ^_^
 
 //requires Jquery 2.0
@@ -24,7 +27,8 @@ var chimpoBar = '<div style="' +
 				'padding-left: 100px;' +
 				'padding-top: 10px;" id="chimpoBar" ">' + 
 			
-				'<form class="chimpoForm" id="chimpoForm" action="http://github.us7.list-manage1.com/subscribe/post" method="POST">' +
+				'<form class="chimpoForm" id="chimpoForm"'+
+				'action="http://github.us7.list-manage1.com/subscribe/post" method="POST">' +
 				 ' <input type="hidden" name="u" value="' + u + '">' +
 				 ' <input type="hidden" name="id" value="' + id + '">' +
 				 ' <input class="input" type="email" value="" name="MERGE0" placeholder="Your Email Address" required>' +
@@ -47,7 +51,7 @@ $(document).ready(function() {
 	$('#chimpoForm').submit(function(e) {
 	  var $this = $(this);
 	  $.ajax({
-	      type: "POST", // GET & url for json slightly different
+	      type: "POST", 
 	      url: "http://github.us7.list-manage1.com/subscribe/post-json?c=?",
 	      data: $this.serialize(),
 	      dataType    : 'json',
@@ -66,7 +70,7 @@ $(document).ready(function() {
 	  });
 	  return false;
 	});
-	});
+});
 	
 	
 	//TODO:
